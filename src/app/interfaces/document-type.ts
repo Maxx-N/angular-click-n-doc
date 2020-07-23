@@ -6,4 +6,5 @@ export interface DocumentType {
   isMonthly: boolean;
   hasIssuanceDate: boolean;
   hasExpirationDate: boolean;
+  documents: Document[];
 }

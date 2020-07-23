@@ -1,57 +1,59 @@
 <h2 class="text-center">Les types de documents</h2>
-<div class="list-group">
+<div>
   <div
-    class="list-group-item"
+    class="list-group list-group-flush"
     *ngFor="let item of retrievedDocumentTypes | async"
   >
-    <div class="h3 text-center">{{ item.name }}</div>
-    <ul class="list-group">
-      <li class="list-group-item">id: {{ item.id }}</li>
-      <li
-        [ngClass]="{
-          'list-group-item': true,
-          'text-success': item.isUnique === true,
-          'text-danger': item.isUnique === false
-        }"
-      >
-        Document unique : {{ item.isUnique }}
-      </li>
-      <li
-        [ngClass]="{
-          'list-group-item': true,
-          'text-success': item.hasIssuanceDate === true,
-          'text-danger': item.hasIssuanceDate === false
-        }"
-      >
-        Document daté : {{ item.hasIssuanceDate }}
-      </li>
-      <li
-        [ngClass]="{
-          'list-group-item': true,
-          'text-success': item.hasExpirationDate === true,
-          'text-danger': item.hasExpirationDate === false
-        }"
-      >
-        Document pouvant expirer : {{ item.hasExpirationDate }}
-      </li>
-      <li
-        [ngClass]="{
-          'list-group-item': true,
-          'text-success': item.isMonthly === true,
-          'text-danger': item.isMonthly === false
-        }"
-      >
-        Document périodique mensuel : {{ item.isMonthly }}
-      </li>
-      <li
-        [ngClass]="{
-          'list-group-item': true,
-          'text-success': item.isAnnual === true,
-          'text-danger': item.isAnnual === false
-        }"
-      >
-        Document périodique annuel : {{ item.isAnnual }}
-      </li>
-    </ul>
+    <div class="list-group-item list-group-item-action">
+      <div class="h4 text-info text-center">{{ item.name }}</div>
+      <ul class="list-group">
+        <li class="list-group-item">id: {{ item.id }}</li>
+        <li
+          [ngClass]="{
+            'list-group-item': true,
+            'text-success': item.isUnique === true,
+            'text-danger': item.isUnique === false
+          }"
+        >
+          Document unique : {{ item.isUnique }}
+        </li>
+        <li
+          [ngClass]="{
+            'list-group-item': true,
+            'text-success': item.hasIssuanceDate === true,
+            'text-danger': item.hasIssuanceDate === false
+          }"
+        >
+          Document daté : {{ item.hasIssuanceDate }}
+        </li>
+        <li
+          [ngClass]="{
+            'list-group-item': true,
+            'text-success': item.hasExpirationDate === true,
+            'text-danger': item.hasExpirationDate === false
+          }"
+        >
+          Document pouvant expirer : {{ item.hasExpirationDate }}
+        </li>
+        <li
+          [ngClass]="{
+            'list-group-item': true,
+            'text-success': item.isMonthly === true,
+            'text-danger': item.isMonthly === false
+          }"
+        >
+          Document périodique mensuel : {{ item.isMonthly }}
+        </li>
+        <li
+          [ngClass]="{
+            'list-group-item': true,
+            'text-success': item.isAnnual === true,
+            'text-danger': item.isAnnual === false
+          }"
+        >
+          Document périodique annuel : {{ item.isAnnual }}
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
