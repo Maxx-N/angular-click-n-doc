@@ -5,14 +5,14 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class DocumentTypeApiService {
+export class DocumentApiService {
   private mainPath: string = 'api';
 
   constructor(private httpClient: HttpClient) {}
 
-  getAllDocumentTypes(): Observable<any> {
-    return this.httpClient.get<DocumentType>(
-      `${this.mainPath}/DocumentTypeApi`
+  getAllDocuments(): Observable<any> {
+    return this.httpClient.get<Document>(
+      `${this.mainPath}/DocumentApi`
     );
   }
 }
