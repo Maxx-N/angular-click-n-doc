@@ -1,1 +1,38 @@
-<p>login works!</p>
+<h2 class="text-center">Les personnes</h2>
+<div>
+  <div
+    class="list-group list-group-flush"
+    *ngFor="let item of retrievedPersons | async"
+  >
+    <div class="list-group-item list-group-item-action">
+      <div class="h4 text-info text-center">
+        {{ item.email }}
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item" *ngIf="item.lastName">
+          {{ item.lastName }}
+        </li>
+        <li class="list-group-item" *ngIf="item.firstName">
+          {{ item.firstName }}
+        </li>
+        <li class="list-group-item" *ngIf="item.birthDate">
+          Né(e) le {{ item.birthDate | date: "short" }}
+        </li>
+        <li class="list-group-item" *ngIf="item.phoneNumber">
+          Tél : {{ item.phoneNumber }}
+        </li>
+        <li class="list-group-item" *ngIf="item.address">
+          Adresse : {{ item.address }}
+        </li>
+        <li class="text-success" *ngIf="item.user; else notAUser">
+          Utilisateur enregistré sur Click'n Doc
+        </li>
+        <ng-template #notAUser>
+          <li class="text-danger">
+            Cette personne n'est pas inscrite sur le site
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -11,7 +11,7 @@ export class DocumentTypeApiService {
   constructor(private httpClient: HttpClient) {}
 
   getAllDocumentTypes(): Observable<any> {
-    return this.httpClient.get<DocumentType>(
+    return this.httpClient.get<any>(
       `${this.mainPath}/DocumentTypeApi`
     );
   }

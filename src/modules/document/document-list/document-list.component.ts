@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DocumentApiService } from 'src/app/services/document-api.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-document-list',
@@ -7,7 +8,7 @@ import { DocumentApiService } from 'src/app/services/document-api.service';
   styleUrls: ['./document-list.component.scss'],
 })
 export class DocumentListComponent implements OnInit {
-  retrievedDocuments: any;
+  retrievedDocuments: Observable<any>;
   constructor(private documentApiService: DocumentApiService) {}
 
   ngOnInit(): void {
