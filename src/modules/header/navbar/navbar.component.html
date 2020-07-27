@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="navbar-brand" routerLinkActive="active">
+    <a routerLink="documents">Click'n Doc</a>
+  </div>
+
+  <div ngbDropdown  class="dropdown show nav navbar-nav" >
+    <a
+      class="btn btn-secondary dropdown-toggle"
+      ngbDropdownToggle
+    >
+      Documents
+    </a>
+
+    <div ngbDropdownMenu  class="dropdown-menu">
+      <a
+        class="dropdown-item"
+        [routerLink]="['documents']"
+        routerLinkActive="active"
+        ngbDropdownItem
+        >Voir les documents</a
+      >
+      <a
+        class="dropdown-item"
+        [routerLink]="['document-types']"
+        routerLinkActive="active"
+        ngbDropdownItem
+        >Voir les types de documents</a
+      >
+    </div>
+  </div>
+</nav>
