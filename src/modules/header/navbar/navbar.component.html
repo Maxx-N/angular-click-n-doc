@@ -5,7 +5,7 @@
 
   <div ngbDropdown  class="dropdown show nav navbar-nav" >
     <a
-      class="btn btn-secondary dropdown-toggle"
+      class="btn btn-primary dropdown-toggle"
       ngbDropdownToggle
     >
       Documents
@@ -25,6 +25,32 @@
         routerLinkActive="active"
         ngbDropdownItem
         >Voir les types de documents</a
+      >
+    </div>
+  </div>
+
+  <div ngbDropdown  class="dropdown show nav navbar-nav ml-auto" >
+    <a
+      class="btn btn-secondary dropdown-toggle"
+      ngbDropdownToggle
+    >
+      Authentification
+    </a>
+
+    <div ngbDropdownMenu  class="dropdown-menu dropdown-menu-right">
+      <a
+        class="dropdown-item"
+        [routerLink]="['auth/login']"
+        routerLinkActive="active"
+        ngbDropdownItem
+        >Connexion</a
+      >
+      <a
+        class="dropdown-item"
+        [routerLink]="['auth/signup']"
+        routerLinkActive="active"
+        ngbDropdownItem
+        >Inscription</a
       >
     </div>
   </div>
