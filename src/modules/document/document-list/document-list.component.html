@@ -5,47 +5,22 @@
     *ngFor="let item of retrievedDocuments | async"
   >
     <div class="list-group-item list-group-item-action">
-      <div class="h4 text-info text-center">{{ item.id }}</div>
-      <!-- <ul class="list-group">
-        <li class="list-group-item">id: {{ item.id }}</li>
-        <li class="list-group-item">Durée : {{ item.duration }}</li> -->
-      <!-- <li
-          [ngClass]="{
-            'list-group-item': true,
-            'text-success': item.hasIssuanceDate === true,
-            'text-danger': item.hasIssuanceDate === false
-          }"
-        >
-          Document daté : {{ item.hasIssuanceDate }}
-        </li>
-        <li
-          [ngClass]="{
-            'list-group-item': true,
-            'text-success': item.hasExpirationDate === true,
-            'text-danger': item.hasExpirationDate === false
-          }"
-        >
-          Document pouvant expirer : {{ item.hasExpirationDate }}
-        </li>
-        <li
-          [ngClass]="{
-            'list-group-item': true,
-            'text-success': item.isMonthly === true,
-            'text-danger': item.isMonthly === false
-          }"
-        >
-          Document périodique mensuel : {{ item.isMonthly }}
-        </li>
-        <li
-          [ngClass]="{
-            'list-group-item': true,
-            'text-success': item.isAnnual === true,
-            'text-danger': item.isAnnual === false
-          }"
-        >
-          Document périodique annuel : {{ item.isAnnual }}
-        </li> -->
-      <!-- </ul> -->
+      <div class="h4 text-info text-center" *ngIf="item.owner; else noOwner">
+        {{ item.documentType.name }} de {{ item.owner.email }}
+      </div>
+      <ng-template #noOwner>
+        <div class="h4 text-info text-center">{{ item.documentType.name }}</div>
+      </ng-template>
+      <ul class="list-group">
+        <li class="list-group-item" *ngIf="item.issuer">Emis par {{ item.issuer.email }}</li>
+        <li class="list-group-item" *ngIf="item.issuanceDate">Le {{ item.issuanceDate | date : "short" }}</li>
+        <li class="list-group-item" *ngIf="item.duration">Valable {{ item.duration }} jours</li>
+        <li class="list-group-item" *ngIf="item.month">Mois : {{ item.month }}</li>
+        <li class="list-group-item" *ngIf="item.year">Année : {{ item.year }}</li>
+        <li class="list-group-item" *ngIf="item.title">Titre : {{ item.title }}</li>
+        <li class="list-group-item" >(Fichier à ajouter ici)</li>
+
+      </ul>
     </div>
   </div>
 </div>
