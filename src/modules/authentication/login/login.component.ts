@@ -4,6 +4,9 @@ import { Observable,forkJoin } from 'rxjs';
 import { mergeMap, map } from 'rxjs/operators';
 import { Person } from 'src/app/interfaces/person';
 import { User } from 'src/app/interfaces/user';
+import { FormControl, FormGroup } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +16,14 @@ import { User } from 'src/app/interfaces/user';
 export class LoginComponent implements OnInit {
   retrievedPersons: Observable<Person[]>;
 
-  constructor(private userApiService: UserApiService) {}
+    loginForm = new FormGroup({
+    email: new FormControl(),
+    password:  new FormControl(),
+});
+  constructor(private userApiService: UserApiService,
+              private router: Router,
+              private authservice: AuthService) {}
+
 
   ngOnInit(): void {
     this.retrievedPersons = forkJoin([
@@ -31,4 +41,19 @@ export class LoginComponent implements OnInit {
       })
     );
   }
+ 
+
+ login(): void {
+
+  const loginObserver = {
+    next: x => console.log('user is logged in'),
+    error: err => console.log(err),
+  };
+  this.authservice.login(this.loginForm.value).subscribe(loginObserver);
+  this.router.navigate(['documents']);
+
+  this.router.navigate(['documents', { id: 7 }]);
+
+}
+
 }

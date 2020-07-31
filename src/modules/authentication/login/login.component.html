@@ -1,38 +1,33 @@
-<h2 class="text-center">Les personnes</h2>
-<div>
-  <div
-    class="list-group list-group-flush"
-    *ngFor="let item of retrievedPersons | async"
-  >
-    <div class="list-group-item list-group-item-action">
-      <div class="h4 text-info text-center">
-        {{ item.email }}
-      </div>
-      <ul class="list-group">
-        <li class="list-group-item" *ngIf="item.lastName">
-          {{ item.lastName }}
-        </li>
-        <li class="list-group-item" *ngIf="item.firstName">
-          {{ item.firstName }}
-        </li>
-        <li class="list-group-item" *ngIf="item.birthDate">
-          Né(e) le {{ item.birthDate | date: "short" }}
-        </li>
-        <li class="list-group-item" *ngIf="item.phoneNumber">
-          Tél : {{ item.phoneNumber }}
-        </li>
-        <li class="list-group-item" *ngIf="item.address">
-          Adresse : {{ item.address }}
-        </li>
-        <li class="text-success" *ngIf="item.user; else notAUser">
-          Utilisateur enregistré sur Click'n Doc
-        </li>
-        <ng-template #notAUser>
-          <li class="text-danger">
-            Cette personne n'est pas inscrite sur le site
-          </li>
-        </ng-template>
-      </ul>
-    </div>
+<div class="row">
+  <div class="col-md-6 offset-md-3 ">
+<h2>Connexion</h2>
+<form [formGroup]="loginForm" (ngSubmit) ="login()" >
+  
+  <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" formControlName="email" class="form-control" required />
   </div>
+  <ng-container
+    *ngIf="loginForm.get('email')?.errors as errors"
+  >
+    <div class="text-danger" *ngIf="errors.required">Email is required</div>
+  </ng-container>
+
+  <div class="form-group">
+      <label for="password">Mot de passe</label>
+      <input type="password" formControlName="password" class="form-control"  />  
+  </div>
+  <ng-container
+    *ngIf="loginForm.get('password')?.errors as errors"
+  >
+  <div  class="text-danger" *ngIf="password.errors.required">Password is required</div>
+  </ng-container>    
+  <div class="form-group">
+      <button class="btn btn-primary">
+          Login 
+      </button>
+      <a routerLink="/login" class="btn btn-link">Cancel</a>
+  </div>
+</form>
+</div>
 </div>
