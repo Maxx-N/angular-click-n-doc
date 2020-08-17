@@ -28,7 +28,7 @@ export class SignupComponent implements OnInit {
       error: err => console.log('err')
     };
     this.authservice.register(this.registerForm.value).subscribe(registerObserver);
-    this.router.navigate(['documents']);
+    this.router.navigate(['document-types']);
   }
 }
 

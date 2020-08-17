@@ -50,9 +50,8 @@ export class LoginComponent implements OnInit {
     error: err => console.log(err),
   };
   this.authservice.login(this.loginForm.value).subscribe(loginObserver);
-  this.router.navigate(['documents']);
 
-  this.router.navigate(['documents', { id: 7 }]);
+  this.router.navigate(['document-types']);
 
 }
 
